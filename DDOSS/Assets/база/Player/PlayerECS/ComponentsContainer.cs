@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 namespace база.Player.PlayerECS
 {
@@ -15,6 +16,13 @@ namespace база.Player.PlayerECS
             _master = master;
         }
 
+        public void InjectAll(IObjectResolver resolver)
+        {
+            foreach (var component in _components)
+                resolver.Inject(component.Value);
+        }
+        
+        
         public void Add<TComponent>(IComponent component, bool replace = false)
             where TComponent : IComponent
         {
