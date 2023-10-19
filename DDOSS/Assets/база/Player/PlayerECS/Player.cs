@@ -5,8 +5,11 @@ using VContainer;
 
 namespace база.Player.PlayerECS
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public sealed class Player : MonoBehaviour
     {
+        public Rigidbody2D Rigidbody2D { get; private set; }
+        
         private ComponentsContainer _componentsContainer;
         private IObjectResolver _resolver;
 
@@ -18,6 +21,7 @@ namespace база.Player.PlayerECS
         
         private void Awake()
         {
+            Rigidbody2D = GetComponent<Rigidbody2D>();
             InitializeComponents();
         }
 

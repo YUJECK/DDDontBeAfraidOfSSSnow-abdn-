@@ -18,7 +18,7 @@ namespace база.Player
 
         private void OnMoved(Vector2 movement)
         {
-            Debug.Log(movement);
+            Master.Rigidbody2D.velocity = movement * 5;
         }
     }
 }

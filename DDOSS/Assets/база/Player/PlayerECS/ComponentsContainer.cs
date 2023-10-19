@@ -38,10 +38,10 @@ namespace база.Player.PlayerECS
             {
                 _components[componentType].OnRemoved();
                 _components[componentType] = component;
-                
-                component.InitializeMaster(_master);
-                component.OnAdded();
             }
+            
+            component.InitializeMaster(_master);
+            component.OnAdded();
         }
 
         public void Remove<TComponent>()

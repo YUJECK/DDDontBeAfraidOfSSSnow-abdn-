@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace база.Player.PlayerECS
 {
     public class DefaultusComponent : IComponent
@@ -11,7 +13,8 @@ namespace база.Player.PlayerECS
 
         public virtual void OnAdded()
         {
-            
+            if(Master == null)
+                Debug.LogError("Master is null");
         }
 
         public virtual void OnUpdate()
