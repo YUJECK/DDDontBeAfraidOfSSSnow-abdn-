@@ -1,6 +1,7 @@
 using UnityEngine;
 using VContainer;
-using база.InputService;
+using VContainer.Unity;
+using база.InputServices;
 using база.Player.PlayerECS;
 
 namespace база.Player
@@ -16,6 +17,8 @@ namespace база.Player
             _inputService.OnMoved += OnMoved;
         }
 
+        
+        
         private void OnMoved(Vector2 movement)
         {
             Master.Rigidbody2D.velocity = movement * 5;

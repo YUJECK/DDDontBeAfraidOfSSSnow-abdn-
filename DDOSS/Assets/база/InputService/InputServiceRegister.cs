@@ -1,7 +1,7 @@
 using VContainer;
 using VContainer.Unity;
 
-namespace база.InputService
+namespace база.InputServices
 {
     public sealed class InputServiceRegister : LifetimeScope
     {

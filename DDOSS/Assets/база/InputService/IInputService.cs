@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace база.InputService
+namespace база.InputServices
 {
     public interface IInputService
     {
