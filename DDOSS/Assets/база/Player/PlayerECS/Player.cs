@@ -25,12 +25,20 @@ namespace база.Player.PlayerECS
             InitializeComponents();
         }
 
+        private void Update()
+        {
+            _componentsContainer.UpdateAll();
+        }
+
         private void InitializeComponents()
         {
             _componentsContainer = new ComponentsContainer(new Dictionary<Type, IComponent>(), this);
+            
+            _componentsContainer.EnableAutoInject(_resolver);
+            
             _componentsContainer.Add<Movement>(new Movement());
-
-            _componentsContainer.InjectAll(_resolver);
+            _componentsContainer.Add<Examiner>(new Examiner());
+            _componentsContainer.Add<Flipper>(new Flipper(_componentsContainer.Get<Movement>()));
         }
     }
 }

@@ -9,6 +9,8 @@ namespace база.Player.PlayerECS
     {
         private readonly Dictionary<Type, IComponent> _components;
         private readonly Player _master;
+        
+        private IObjectResolver _resolver;
 
         public ComponentsContainer(Dictionary<Type, IComponent> components, Player master)
         {
@@ -21,9 +23,31 @@ namespace база.Player.PlayerECS
             foreach (var component in _components)
                 resolver.Inject(component.Value);
         }
+
+        public void EnableAutoInject(IObjectResolver resolver)
+            => _resolver = resolver;
         
+        public void DisableAutoInject(IObjectResolver resolver)
+            => _resolver = null;
+
+        public void UpdateAll()
+        {
+            foreach (var component in _components)
+                component.Value.OnUpdate();
+        }
+
+        public void RemoveAll()
+        {
+            foreach (var component in _components)
+                component.Value.OnRemoved();
+        }
+
+        public TComponent Get<TComponent>()
+        {
+            return (TComponent)_components[typeof(TComponent)];
+        }
         
-        public void Add<TComponent>(IComponent component, bool replace = false)
+        public void Add<TComponent>(TComponent component, bool replace = false)
             where TComponent : IComponent
         {
             if (component == null)
@@ -41,6 +65,12 @@ namespace база.Player.PlayerECS
             }
             
             component.InitializeMaster(_master);
+
+            if (_resolver != null)
+            {
+                _resolver.Inject(component);
+            }
+            
             component.OnAdded();
         }
 

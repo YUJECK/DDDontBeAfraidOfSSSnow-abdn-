@@ -9,8 +9,11 @@ namespace база.InputServices
     public sealed class InputService : IInputService, ITickable 
     {
         public event Action<Vector2> OnMoved;
+        public event Action OnExamine;
+        public Vector2 MousePosition { get; private set; }
 
         private Vector2 _movement;  
+        
         private readonly Inputs _inputs;
 
         public InputService()
@@ -18,7 +21,14 @@ namespace база.InputServices
             _inputs = new Inputs();
 
             _inputs.Player.Movement.performed += OnMoving;
+            _inputs.Player.Examine.performed += Examine;
+            
             _inputs.Enable();
+        }
+
+        private void Examine(InputAction.CallbackContext obj)
+        {
+            OnExamine?.Invoke();
         }
 
         private void OnMoving(InputAction.CallbackContext obj)
@@ -29,6 +39,7 @@ namespace база.InputServices
         public void Tick()
         {
             OnMoved?.Invoke(ReadMovement());
+            MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         private Vector2 ReadMovement()
