@@ -9,6 +9,7 @@ namespace база.Player.PlayerECS
     public sealed class Player : MonoBehaviour
     {
         public Rigidbody2D Rigidbody2D { get; private set; }
+        public Animator Animator { get; private set; }
         
         private ComponentsContainer _componentsContainer;
         private IObjectResolver _resolver;
@@ -22,6 +23,7 @@ namespace база.Player.PlayerECS
         private void Awake()
         {
             Rigidbody2D = GetComponent<Rigidbody2D>();
+            Animator = GetComponent<Animator>();
             InitializeComponents();
         }
 

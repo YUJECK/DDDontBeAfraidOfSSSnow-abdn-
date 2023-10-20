@@ -8,7 +8,8 @@ namespace база.Player
     public sealed class Movement : DefaultusComponentus
     {
         private IInputService _inputService;
-        
+        private static readonly int AnimatorMovement = Animator.StringToHash("Movement");
+
         public Vector2 CurrentMovement { get; private set; }
 
         [Inject]
@@ -34,6 +35,7 @@ namespace база.Player
             CurrentMovement = movement * 5;
             
             Master.Rigidbody2D.velocity = CurrentMovement;
+            Master.Animator.SetBool(AnimatorMovement, CurrentMovement != Vector2.zero);
         }
     }
 }
