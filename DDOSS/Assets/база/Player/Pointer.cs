@@ -5,24 +5,18 @@ using база.Player.PlayerECS;
 
 namespace база.Player
 {
-    public sealed class Examiner : DefaultusComponentus
+    public sealed class Pointer : DefaultusComponentus
     {
         private IInputService _inputService;
-        private readonly RaycastHit2D[] _raycasted = new RaycastHit2D[20];
-        private const float ExamineDistance = 4f;
-
+        private RaycastHit2D[] _raycasted = new RaycastHit2D[10];
+        
         [Inject]
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
         }
-
-        public override void OnAdded()
-        {
-            _inputService.OnExamine += OnExamine;
-        }
-
-        private void OnExamine()
+        
+        public override void OnUpdate()
         {
             var size = Physics2D.RaycastNonAlloc(_inputService.MousePosition, Vector2.zero, _raycasted);
 
@@ -30,10 +24,9 @@ namespace база.Player
             {
                 var current = _raycasted[i];
 
-                if (current.transform.gameObject.TryGetComponent<IExaminable>(out var examinable) &&
-                    Vector3.Distance(current.transform.position, Master.transform.position) <= ExamineDistance)
+                if (current.transform.gameObject.TryGetComponent<IPointable>(out var pointable))
                 {
-                    examinable.Examine();
+                    pointable.Point();
                 }
             }
         }

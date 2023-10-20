@@ -39,6 +39,7 @@ namespace база.Player.PlayerECS
             _componentsContainer.Add<Movement>(new Movement());
             _componentsContainer.Add<Examiner>(new Examiner());
             _componentsContainer.Add<Flipper>(new Flipper(_componentsContainer.Get<Movement>()));
+            _componentsContainer.Add<Pointer>(new Pointer());
         }
     }
 }

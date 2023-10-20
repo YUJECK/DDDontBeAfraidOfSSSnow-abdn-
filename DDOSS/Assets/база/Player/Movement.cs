@@ -5,7 +5,7 @@ using база.Player.PlayerECS;
 
 namespace база.Player
 {
-    public sealed class Movement : DefaultusComponent
+    public sealed class Movement : DefaultusComponentus
     {
         private IInputService _inputService;
         

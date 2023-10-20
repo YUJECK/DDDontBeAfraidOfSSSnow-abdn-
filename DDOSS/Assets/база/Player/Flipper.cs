@@ -3,7 +3,7 @@ using база.Player.PlayerECS;
 
 namespace база.Player
 {
-    public sealed class Flipper : DefaultusComponent
+    public sealed class Flipper : DefaultusComponentus
     {
         private readonly Movement _movement;
             public FacingDirections FacingDirection { get; private set; }

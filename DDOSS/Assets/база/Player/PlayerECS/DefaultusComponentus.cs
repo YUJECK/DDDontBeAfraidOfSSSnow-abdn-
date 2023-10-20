@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace база.Player.PlayerECS
 {
-    public class DefaultusComponent : IComponent
+    public class DefaultusComponentus : IComponent
     {
         protected Player Master;
         
