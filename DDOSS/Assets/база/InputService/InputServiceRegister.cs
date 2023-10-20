@@ -1,5 +1,6 @@
 using VContainer;
 using VContainer.Unity;
+using база.InventorySystem;
 
 namespace база.InputServices
 {
@@ -10,6 +11,11 @@ namespace база.InputServices
             builder
                 .Register<InputService>(Lifetime.Singleton)
                 .As<IInputService>()
+                .As<ITickable>();
+            
+            builder
+                .Register<Inventory>(Lifetime.Singleton)
+                .As<Inventory>()
                 .As<ITickable>();
         }
     }

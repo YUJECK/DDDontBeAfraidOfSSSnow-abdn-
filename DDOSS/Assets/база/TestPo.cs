@@ -1,7 +1,7 @@
 using UnityEngine;
 using база.Player;
 
-namespace база.Cameras
+namespace база
 {
     public class TestPo : MonoBehaviour, IPointable
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace база.Cameras
+namespace база
 {
     [Serializable]
     public sealed class CamerasContainer

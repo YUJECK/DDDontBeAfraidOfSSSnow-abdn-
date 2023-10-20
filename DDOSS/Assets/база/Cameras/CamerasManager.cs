@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace база.Cameras
+namespace база
 {
     public sealed class CamerasManager
     {
