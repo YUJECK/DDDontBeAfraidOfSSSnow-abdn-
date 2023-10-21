@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 namespace база.InventorySystem
 {
-    [RequireComponent(typeof(Image))]
     public class InventorySlot : MonoBehaviour
     {
         public Item Item { get; private set; }
@@ -14,7 +13,7 @@ namespace база.InventorySystem
 
         private void Start()
         {
-            _image = GetComponent<Image>();
+            _image = GetComponentInChildren<Image>();
             
             SetItem(null);
         }
