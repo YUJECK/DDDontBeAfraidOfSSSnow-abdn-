@@ -1,10 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace база.InventorySystem
 {
     public abstract class Item : ScriptableObject
     {
+        [field: SerializeField] public Sprite ItemImage { get; private set; }
+        [field: SerializeField] public Sprite ItemWorldImage { get; private set; }
+        [field: SerializeField] public string ItemID { get; private set; }
+
         public virtual Type GetItemType()
             => this.GetType();
 
@@ -28,12 +33,12 @@ namespace база.InventorySystem
         {
             
         }
-        
+
         public virtual void OnRemovedFromInventory(Inventory inventory)
         {
             
         }
-        
+
         public virtual void OnInInventory(Inventory inventory)
         {
             

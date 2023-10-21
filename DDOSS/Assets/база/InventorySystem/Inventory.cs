@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using VContainer.Unity;
 
 namespace база.InventorySystem
@@ -7,6 +8,9 @@ namespace база.InventorySystem
     public sealed class Inventory : ITickable
     {
         private readonly Dictionary<Type, List<Item>> _items = new();
+
+        public event Action<Item> OnAdded; 
+        public event Action<Item> OnRemoved; 
         
         public void Add(Item item)
         {
@@ -23,21 +27,34 @@ namespace база.InventorySystem
             }
             
             item.OnAddedToInventory(this);
+            OnAdded?.Invoke(item);
         }
 
         public void Remove(Type type, int count)
         {
+            if(!_items.ContainsKey(type))
+                return;
+
+            var item = _items[type].First();
+            
             _items[type].RemoveRange(0, count);
+            OnRemoved?.Invoke(item);
         }
 
         public void Remove(Item item, int count)
         {
+            if(!_items.ContainsKey(item.GetItemType()))
+                return;
+            
             _items[item.GetItemType()].RemoveRange(0, count);
+            
+            OnRemoved?.Invoke(item);
         }
 
         public void Remove(Item item)
         {
             _items[item.GetItemType()].Remove(item);
+            OnRemoved?.Invoke(item);
         }
         
         public void Tick()

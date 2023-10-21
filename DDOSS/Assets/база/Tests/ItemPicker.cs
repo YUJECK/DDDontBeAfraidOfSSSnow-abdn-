@@ -3,7 +3,7 @@ using UnityEngine;
 using VContainer;
 using база.InventorySystem;
 
-public class TestEx : MonoBehaviour, IExaminable
+public class ItemPicker : MonoBehaviour, IExaminable
 {
     public Item item;
     
