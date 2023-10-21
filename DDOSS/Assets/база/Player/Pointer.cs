@@ -8,27 +8,39 @@ namespace база.Player
     public sealed class Pointer : DefaultusComponentus
     {
         private IInputService _inputService;
-        private RaycastHit2D[] _raycasted = new RaycastHit2D[10];
-        
+        private IPointable _lastPointable;
+        private GameObject _lastPointableGameObject;
+
+        public const float ExamineDistance = 4f;
+
         [Inject]
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
         }
-        
+
         public override void OnUpdate()
         {
-            var size = Physics2D.RaycastNonAlloc(_inputService.MousePosition, Vector2.zero, _raycasted);
+            var hit = Physics2D.Raycast(_inputService.MousePosition, Vector2.zero);
 
-            for (int i = 0; i < size; i++)
+            if (hit.transform != null)
             {
-                var current = _raycasted[i];
-
-                if (current.transform.gameObject.TryGetComponent<IPointable>(out var pointable))
+                if (hit.transform.gameObject != _lastPointableGameObject && _lastPointableGameObject != null)
+                    _lastPointable.Unpoint();
+                
+                if (hit.transform.gameObject.TryGetComponent<IPointable>(out var pointable) && CheckDistance(hit.transform.position))
                 {
                     pointable.Point();
+                    _lastPointable = pointable;
+                    _lastPointableGameObject = hit.transform.gameObject;
                 }
             }
+            else if(_lastPointableGameObject != null)
+            {
+                _lastPointable.Unpoint();
+            }
         }
+
+        private bool CheckDistance(Vector3 toCheck) => Vector3.Distance(toCheck, Master.transform.position) <= ExamineDistance;
     }
 }

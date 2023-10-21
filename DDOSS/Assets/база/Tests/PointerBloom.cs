@@ -1,12 +1,12 @@
 using UnityEngine;
 using база.Player;
 
-namespace база
+namespace база.Tests
 {
     public class PointerBloom : MonoBehaviour, IPointable
     {
         public SpriteRenderer spriteRenderer;
-
+        
         private void Awake()
         {
             if(spriteRenderer == null)
@@ -16,9 +16,14 @@ namespace база
         public void Point()
         {
             var color = spriteRenderer.color;
-            color = new Color(color.r, color.g, color.b, 180);
             
+            color = new Color(color.a, color.b,color.maxColorComponent, 0.5f);
             spriteRenderer.color = color;
+        }
+
+        public void Unpoint()
+        {
+            spriteRenderer.color = Color.white;            
         }
     }
 }
