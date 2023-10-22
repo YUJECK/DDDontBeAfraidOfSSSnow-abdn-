@@ -2,12 +2,14 @@ using VContainer;
 using VContainer.Unity;
 using база.InventorySystem;
 using база.InventorySystem.UI;
+using база.PlayerSystem.PlayerECS;
 using база.Tests;
 
 namespace база.InputServices
 {
     public sealed class ServicesRegister : LifetimeScope
     {
+        public Player player;
         public ItemPicker itemPickerPrefab;
         
         protected override void Configure(IContainerBuilder builder)
@@ -26,6 +28,10 @@ namespace база.InputServices
 
             builder
                 .Register<ItemsDropper>(Lifetime.Singleton)
+                .AsSelf();
+            
+            builder
+                .RegisterComponent(player)
                 .AsSelf();
         }
     }

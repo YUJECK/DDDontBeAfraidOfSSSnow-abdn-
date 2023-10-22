@@ -1,7 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 using база.Tests;
 
 namespace база.InventorySystem.UI

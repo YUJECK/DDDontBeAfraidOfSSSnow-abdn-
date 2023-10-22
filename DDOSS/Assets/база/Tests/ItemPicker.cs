@@ -24,7 +24,7 @@ namespace база.Tests
                 SetItem(Instantiate(item));
         }
 
-        public void SetItem(Item newItem)
+        public void SetItem(Item newItem)   
         {
             item = newItem;
             

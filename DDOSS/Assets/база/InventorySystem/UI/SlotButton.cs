@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
+using база.PlayerSystem.PlayerECS;
 
 namespace база.InventorySystem.UI
 {
@@ -12,12 +13,14 @@ namespace база.InventorySystem.UI
         private InventorySlot _slot;
         private Inventory _inventory;
         private ItemsDropper _dropper;
+        private Player _player;
 
         [Inject]
-        private void Construct(Inventory inventory, ItemsDropper dropper)
+        private void Construct(Inventory inventory, ItemsDropper dropper, Player player)
         {
             _inventory = inventory;
             _dropper = dropper;
+            _player = player;
         }
         
         private void Start()
@@ -35,8 +38,13 @@ namespace база.InventorySystem.UI
                 var item = _slot.Item;
                 
                 _inventory.Remove(_slot.Item);
-                _dropper.Spawn(item, Vector2.zero);
+                _dropper.Spawn(item, GetPos() );
             }
+        }
+
+        private Vector2 GetPos()
+        {
+            return new(_player.transform.position.x - _player.transform.localScale.x, _player.transform.position.y);
         }
     }
 }
