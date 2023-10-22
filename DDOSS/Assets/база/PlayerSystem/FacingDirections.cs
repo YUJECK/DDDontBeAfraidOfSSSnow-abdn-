@@ -1,4 +1,4 @@
-namespace база.Player
+namespace база.PlayerSystem
 {
     public enum FacingDirections
     {

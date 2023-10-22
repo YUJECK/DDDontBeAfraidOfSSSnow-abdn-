@@ -30,7 +30,7 @@ namespace база.Tests
             
             _resolver.Inject(item);
             item.OnSpawnedInWorld(gameObject);
-            GetComponent<SpriteRenderer>().sprite = item.ItemWorldImage;
+            GetComponent<SpriteRenderer>().sprite = item.ItemImage;
         }
 
         private void Update()

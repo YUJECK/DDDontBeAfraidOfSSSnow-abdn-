@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
-namespace база.Player.PlayerECS
+namespace база.PlayerSystem.PlayerECS
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public sealed class Player : MonoBehaviour

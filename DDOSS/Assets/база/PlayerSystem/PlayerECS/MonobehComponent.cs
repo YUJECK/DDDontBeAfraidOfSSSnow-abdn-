@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace база.Player.PlayerECS
+namespace база.PlayerSystem.PlayerECS
 {
     public abstract class MonobehComponent : MonoBehaviour, IComponent
     {

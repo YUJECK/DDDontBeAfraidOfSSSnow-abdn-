@@ -1,4 +1,4 @@
-namespace база.Player.PlayerECS
+namespace база.PlayerSystem.PlayerECS
 {
     public interface IComponent
     {

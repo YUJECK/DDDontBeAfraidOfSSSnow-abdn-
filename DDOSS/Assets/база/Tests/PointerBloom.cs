@@ -1,5 +1,5 @@
 using UnityEngine;
-using база.Player;
+using база.PlayerSystem;
 
 namespace база.Tests
 {

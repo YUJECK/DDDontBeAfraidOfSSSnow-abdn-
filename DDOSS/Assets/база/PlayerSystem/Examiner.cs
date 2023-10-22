@@ -1,9 +1,9 @@
 using UnityEngine;
 using VContainer;
 using база.InputServices;
-using база.Player.PlayerECS;
+using база.PlayerSystem.PlayerECS;
 
-namespace база.Player
+namespace база.PlayerSystem
 {
     public sealed class Examiner : DefaultusComponentus
     {
