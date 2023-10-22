@@ -20,17 +20,27 @@ namespace база.Tests
 
         private void Awake()
         {
+            if (item != null)
+                SetItem(Instantiate(item));
+        }
+
+        public void SetItem(Item newItem)
+        {
+            item = newItem;
+            
             _resolver.Inject(item);
             item.OnSpawnedInWorld(gameObject);
+            GetComponent<SpriteRenderer>().sprite = item.ItemWorldImage;
         }
 
         private void Update()
         {
-            item.OnInWorld(gameObject);
+            if(item != null)
+                item.OnInWorld(gameObject);
         }
 
         public void Examine()
-        {   
+        {  
             _inventory.Add(item);
         
             item.OnRemovedFromGameObject(gameObject);

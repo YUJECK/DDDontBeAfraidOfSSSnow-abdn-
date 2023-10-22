@@ -36,8 +36,12 @@ namespace база.InventorySystem
                 return;
 
             var item = _items[type].First();
+
+            foreach (Item item1 in _items[type].GetRange(0, count)) 
+                item1.OnRemovedFromInventory(this);
             
             _items[type].RemoveRange(0, count);
+
             OnRemoved?.Invoke(item);
         }
 
@@ -46,6 +50,8 @@ namespace база.InventorySystem
             if(!_items.ContainsKey(item.GetItemType()))
                 return;
             
+            foreach (Item item1 in _items[item.GetItemType()].GetRange(0, count)) 
+                item1.OnRemovedFromInventory(this);
             _items[item.GetItemType()].RemoveRange(0, count);
             
             OnRemoved?.Invoke(item);
@@ -54,6 +60,7 @@ namespace база.InventorySystem
         public void Remove(Item item)
         {
             _items[item.GetItemType()].Remove(item);
+            item.OnRemovedFromInventory(this);
             OnRemoved?.Invoke(item);
         }
         

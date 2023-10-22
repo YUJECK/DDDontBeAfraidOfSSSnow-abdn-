@@ -1,11 +1,15 @@
 using VContainer;
 using VContainer.Unity;
 using база.InventorySystem;
+using база.InventorySystem.UI;
+using база.Tests;
 
 namespace база.InputServices
 {
-    public sealed class InputServiceRegister : LifetimeScope
+    public sealed class ServicesRegister : LifetimeScope
     {
+        public ItemPicker itemPickerPrefab;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder
@@ -17,6 +21,12 @@ namespace база.InputServices
                 .Register<Inventory>(Lifetime.Singleton)
                 .As<Inventory>()
                 .As<ITickable>();
+
+            builder.RegisterComponent(itemPickerPrefab).AsSelf();
+
+            builder
+                .Register<ItemsDropper>(Lifetime.Singleton)
+                .AsSelf();
         }
     }
 }
