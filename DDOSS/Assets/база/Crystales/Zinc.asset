@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd34f7378a54660a184d34b8b9ced70, type: 3}
+  m_Name: Zinc
+  m_EditorClassIdentifier: 
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 23bcd5f89b8b8d20f823863d23745885, type: 3}
+  <ItemWorldImage>k__BackingField: {fileID: 21300000, guid: 78ad50119761b0902bfb7c9090f7dcc7, type: 3}
+  <ItemID>k__BackingField: zinc

@@ -34,7 +34,7 @@ namespace база.MOBS
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out PlayerTarget target) && _inventory.Contains<TestItem>())
+            if (other.TryGetComponent(out PlayerTarget target) && _inventory.Contains<Zinc>())
             {
                 CurrentTarget = target;
                 CurrentTarget.OnTargeted(this);
