@@ -1,7 +1,9 @@
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using база.InventorySystem;
 using база.InventorySystem.UI;
+using база.MOBS.TargetSystem;
 using база.PlayerSystem.PlayerECS;
 using база.Tests;
 
@@ -9,6 +11,7 @@ namespace база.InputServices
 {
     public sealed class ServicesRegister : LifetimeScope
     {
+        public Transform movePointsContainer;
         public Player player;
         public ItemPicker itemPickerPrefab;
         
@@ -24,7 +27,9 @@ namespace база.InputServices
                 .As<Inventory>()
                 .As<ITickable>();
 
-            builder.RegisterComponent(itemPickerPrefab).AsSelf();
+            builder
+                .RegisterComponent(itemPickerPrefab)
+                .AsSelf();
 
             builder
                 .Register<ItemsDropper>(Lifetime.Singleton)
@@ -32,6 +37,10 @@ namespace база.InputServices
             
             builder
                 .RegisterComponent(player)
+                .AsSelf();
+
+            builder
+                .RegisterInstance(new EnemiesMovePoints(movePointsContainer.GetComponentsInChildren<Target>()))
                 .AsSelf();
         }
     }

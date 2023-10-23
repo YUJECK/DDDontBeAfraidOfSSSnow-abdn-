@@ -8,5 +8,8 @@ namespace база.InputServices
         event Action<Vector2> OnMoved;
         event Action OnExamine;
         Vector2 MousePosition { get; }
+
+        void DisablePlayerInputs();
+        void EnablePlayerInputs();
     }
 }

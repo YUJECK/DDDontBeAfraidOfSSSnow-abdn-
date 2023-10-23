@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -169,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -190,7 +190,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -211,7 +211,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -232,7 +232,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -253,7 +253,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -274,7 +274,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -295,7 +295,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -316,7 +316,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -337,7 +337,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -358,7 +358,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -379,7 +379,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -400,7 +400,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -421,7 +421,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -442,7 +442,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -454,6 +454,69 @@ TextureImporter:
       bones: []
       spriteID: ff5b7693bc366c30bab42cefc19ee084
       internalID: -367059253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a29695a47c1f3b8796be07119483401
+      internalID: -1223849562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7115109477ef27f89c2201690a94c1
+      internalID: -1867188933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf00c25982969e41b80b5821ddfe9934
+      internalID: -1639744643
       vertices: []
       indices: 
       edges: []
@@ -477,6 +540,9 @@ TextureImporter:
       Player-sheet_13: -2030925031
       Player-sheet_14: 962274796
       Player-sheet_15: -367059253
+      Player-sheet_16: -1223849562
+      Player-sheet_17: -1867188933
+      Player-sheet_18: -1639744643
       Player-sheet_2: 952997764
       Player-sheet_3: -1907252497
       Player-sheet_4: -1834534067

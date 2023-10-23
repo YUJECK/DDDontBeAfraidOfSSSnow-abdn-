@@ -10,7 +10,12 @@ namespace база.InventorySystem
         private readonly Dictionary<Type, List<Item>> _items = new();
 
         public event Action<Item> OnAdded; 
-        public event Action<Item> OnRemoved; 
+        public event Action<Item> OnRemoved;
+
+        public bool Contains<TItem>()
+        {
+            return _items.ContainsKey(typeof(TItem));
+        }
         
         public void Add(Item item)
         {

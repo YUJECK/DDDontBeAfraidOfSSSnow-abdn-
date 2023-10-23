@@ -12,8 +12,8 @@ namespace база.InputServices
         public event Action OnExamine;
         public Vector2 MousePosition { get; private set; }
 
-        private Vector2 _movement;  
-        
+        private Vector2 _movement;
+
         private readonly Inputs _inputs;
 
         public InputService()
@@ -25,6 +25,9 @@ namespace база.InputServices
             
             _inputs.Enable();
         }
+
+        public void DisablePlayerInputs() => _inputs.Player.Disable();
+        public void EnablePlayerInputs() => _inputs.Player.Enable();
 
         private void Examine(InputAction.CallbackContext obj)
         {

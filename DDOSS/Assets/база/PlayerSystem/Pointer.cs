@@ -11,7 +11,7 @@ namespace база.PlayerSystem
         private IPointable _lastPointable;
         private GameObject _lastPointableGameObject;
 
-        public const float ExamineDistance = 4f;
+        public const float ExamineDistance = 2f;
 
         [Inject]
         private void Construct(IInputService inputService)

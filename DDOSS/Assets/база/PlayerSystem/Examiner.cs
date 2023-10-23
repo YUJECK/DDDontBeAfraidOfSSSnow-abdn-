@@ -9,7 +9,7 @@ namespace база.PlayerSystem
     {
         private IInputService _inputService;
         private readonly RaycastHit2D[] _raycasted = new RaycastHit2D[20];
-        private const float ExamineDistance = 4f;
+        private const float ExamineDistance = 2f;
 
         [Inject]
         private void Construct(IInputService inputService)

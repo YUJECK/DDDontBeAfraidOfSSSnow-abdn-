@@ -1,6 +1,9 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
+using база.InputServices;
 using база.InventorySystem;
+using база.PlayerSystem.PlayerECS;
 
 namespace база.Tests
 {
@@ -10,12 +13,16 @@ namespace база.Tests
     
         private Inventory _inventory;
         private IObjectResolver _resolver;
+        private IInputService _inputService;
+        private Player _player;
 
         [Inject]
-        private void Construct(Inventory inventory, IObjectResolver resolver)
+        private void Construct(Inventory inventory, IObjectResolver resolver, IInputService inputService, Player player)
         {
             _inventory = inventory;
             _resolver = resolver;
+            _inputService = inputService;
+            _player = player;
         }
 
         private void Awake()
@@ -39,10 +46,18 @@ namespace база.Tests
                 item.OnInWorld(gameObject);
         }
 
-        public void Examine()
+        public async void Examine()
         {  
+            _player.Animator.Play("PlayerPickUp");
+
+            _inputService.DisablePlayerInputs();
+            
+            await UniTask.WaitForSeconds(0.5f);
+            
+            _inputService.EnablePlayerInputs();
+
+            _player.Animator.Play("PlayerIdle");
             _inventory.Add(item);
-        
             item.OnRemovedFromGameObject(gameObject);
             Destroy(gameObject);
         }
