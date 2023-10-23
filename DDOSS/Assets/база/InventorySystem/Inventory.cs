@@ -12,6 +12,18 @@ namespace база.InventorySystem
         public event Action<Item> OnAdded; 
         public event Action<Item> OnRemoved;
 
+        public Item[] GetAll()
+        {
+            var allItems = new List<Item>();
+
+            foreach(var itemPair in _items)
+            {
+                allItems.AddRange(itemPair.Value);
+            }
+
+            return allItems.ToArray();
+        }
+
         public bool Contains<TItem>()
         {
             return _items.ContainsKey(typeof(TItem));
