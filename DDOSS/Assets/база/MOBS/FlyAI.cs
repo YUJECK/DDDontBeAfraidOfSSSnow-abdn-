@@ -13,6 +13,7 @@ namespace база.MOBS
         private Inventory _inventory;
         public Target CurrentTarget { get; private set; }
 
+
         [Inject]
         private void Construct(EnemiesMovePoints enemiesMovePoints, Inventory inventory)
         {

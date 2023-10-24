@@ -1,4 +1,7 @@
-public interface ISellable
+namespace база.Economy
 {
-    int Price { get; }
+    public interface ISellable
+    {
+        int Price { get; }
+    }
 }

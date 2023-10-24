@@ -1,30 +1,34 @@
-using UnityEngine;
+using System;
 
-public sealed class Wallet
+namespace база.Economy
 {
-    public int CurrentBalance { get; private set; }
-
-    public event Action<int, int> OnBalanceChanged;
-
-    public void Add(int toAdd)
+    public sealed class Wallet
     {
-        if(toAdd <= 0)
-            return;
+        public int CurrentBalance { get; private set; }
 
-        CurrentBalance += toAdd;
+        public event Action<int, int> OnBalanceChanged;
 
-        OnBalanceChanged?.Invoke(CurrentBalance - toAdd, CurrentBalance);
-    }
+        public void AddMoney(int toAdd)
+        {
+            if(toAdd <= 0)
+                return;
 
-    public bool Remove(int toRemove)
-    {
-        if(toRemove <= 0)
-            return;
+            CurrentBalance += toAdd;
 
-        if(CurrentBalance < toRemove)
-            return;
+            OnBalanceChanged?.Invoke(CurrentBalance - toAdd, CurrentBalance);
+        }
 
-        CurrentBalance -= toRemove;
-        return true;
+        public bool RemoveMoney(int toRemove)
+        {
+            if(toRemove <= 0)
+                return false;
+
+            if (CurrentBalance < toRemove)
+                return false;
+
+            CurrentBalance -= toRemove;
+            OnBalanceChanged?.Invoke(CurrentBalance + toRemove, CurrentBalance);
+            return true;
+        }
     }
 }

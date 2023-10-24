@@ -1,6 +1,7 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using база.Economy;
 using база.InventorySystem;
 using база.InventorySystem.UI;
 using база.MOBS.TargetSystem;
@@ -41,6 +42,10 @@ namespace база.InputServices
 
             builder
                 .RegisterInstance(new EnemiesMovePoints(movePointsContainer.GetComponentsInChildren<Target>()))
+                .AsSelf();
+            
+            builder
+                .Register<Wallet>(Lifetime.Singleton)
                 .AsSelf();
         }
     }

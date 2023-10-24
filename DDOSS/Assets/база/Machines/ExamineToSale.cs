@@ -1,28 +1,36 @@
 using UnityEngine;
+using VContainer;
+using база.Economy;
+using база.InventorySystem;
 
-public sealed class ExamineToSale : MonoBehaviour, IExaminable
+namespace база.Machines
 {
-    public AudioSource saleSource;
-
-    private Inventory _inventory;
-    private Wallet _wallet;
-
-    private void Construct(Inventory inventory, Wallet wallet)
+    public sealed class ExamineToSale : MonoBehaviour, IExaminable
     {
-        _inventory = inventory;
-        _wallet = wallet;
-    }
+        public AudioSource saleSource;
 
-    public void Examine()
-    {
-        var allItems = inventory.GetAll();
+        private Inventory _inventory;
+        private Wallet _wallet;
 
-        foreach(var item in allItems)
+        [Inject]
+        private void Construct(Inventory inventory, Wallet wallet)
         {
-            if(item is ISellable)
+            _inventory = inventory;
+            _wallet = wallet;
+        }
+
+        public void Examine()
+        {
+            var allItems = _inventory.GetAll();
+
+            foreach(var item in allItems)
             {
-                wallet.AddMoney(item.Price);
-                _inventory.Remove(item);
+                if(item is ISellable sellableItem)
+                {
+                    _wallet.AddMoney(sellableItem.Price);
+                    _inventory.Remove(item);
+                    saleSource.Play();
+                }
             }
         }
     }
