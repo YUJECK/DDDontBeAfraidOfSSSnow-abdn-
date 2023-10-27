@@ -6,7 +6,7 @@ namespace база.WorldBase
     {
         public bool Free => Current == null; 
         public TObject Current { get; private set; }
-        
+
         public virtual void Set(TObject toSet)
         {
             Current = toSet;
@@ -23,8 +23,11 @@ namespace база.WorldBase
 
         public virtual void Destroy()
         {
-            Destroy(Current);
-            Current = null;
+            if (Current != null)
+            {
+                GameObject.Destroy(Current.gameObject);
+                Current = null;    
+            }
         }
     }
 }

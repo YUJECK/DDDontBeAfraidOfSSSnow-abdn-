@@ -36,6 +36,7 @@ namespace база.CrystalsGenerator
             {
                 foreach (var point in area.Points)
                 {
+                    point.Destroy();
                     var prefab = area.CrystalsPrefabsList[Random.Range(0, area.CrystalsPrefabsList.Count)];
                     
                     var spawned = _resolver.Instantiate(prefab.gameObject);
