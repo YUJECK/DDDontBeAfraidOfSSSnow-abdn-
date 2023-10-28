@@ -3,6 +3,7 @@ using UnityEngine;
 using VContainer;
 using база.InputServices;
 using база.InventorySystem;
+using база.PlayerSystem;
 using база.PlayerSystem.PlayerECS;
 
 namespace база.Tests

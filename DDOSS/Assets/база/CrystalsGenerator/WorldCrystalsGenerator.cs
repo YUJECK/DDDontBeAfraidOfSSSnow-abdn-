@@ -41,7 +41,7 @@ namespace база.CrystalsGenerator
                     
                     var spawned = _resolver.Instantiate(prefab.gameObject);
 
-                    spawned.GetComponent<CristalWorldObject>().SetItem(spawned.GetComponent<WorldCrystal>().item);
+                    spawned.GetComponent<CristalMinerAndObject>().SetItem(spawned.GetComponent<WorldCrystal>().item);
                     point.Set(spawned.GetComponent<WorldCrystal>());
                 }
 

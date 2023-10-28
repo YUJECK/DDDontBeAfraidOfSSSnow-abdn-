@@ -2,6 +2,7 @@ using UnityEngine;
 using VContainer;
 using база.Economy;
 using база.InventorySystem;
+using база.PlayerSystem;
 
 namespace база.Machines
 {

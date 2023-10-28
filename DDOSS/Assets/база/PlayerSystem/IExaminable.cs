@@ -1,4 +1,7 @@
-public interface IExaminable
+namespace база.PlayerSystem
 {
-    void Examine();
+    public interface IExaminable
+    {
+        void Examine();
+    }
 }

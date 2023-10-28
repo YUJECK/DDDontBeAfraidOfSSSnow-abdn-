@@ -1,13 +1,14 @@
-using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using VContainer;
 using база.InputServices;
 using база.InventorySystem;
+using база.PlayerSystem;
 using база.PlayerSystem.PlayerECS;
 
 namespace база.Tests
 {
-    public class CristalWorldObject : MonoBehaviour, IExaminable
+    public class CristalMinerAndObject : MonoBehaviour, IExaminable
     {
         [SerializeField] private Item item;
         
@@ -15,6 +16,8 @@ namespace база.Tests
         private Inventory _inventory;
         private IObjectResolver _resolver;
         private IInputService _inputService;
+
+        private Coroutine _mineCoroutine;
 
         [Inject]
         private void Construct(Inventory inventory, IObjectResolver resolver, IInputService inputService, Player player)
@@ -46,14 +49,21 @@ namespace база.Tests
                 item.OnInWorld(gameObject);
         }
 
-        
-        public async void Examine()
+        public void Examine()
+        {
+            if(_mineCoroutine != null)
+                return;
+            
+            _mineCoroutine = StartCoroutine(Mine());
+        }
+
+        private IEnumerator Mine()
         {
             _player.Animator.Play("PlayerMine");
 
             _inputService.DisablePlayerInputs();
             
-            await UniTask.WaitForSeconds(1.1f);
+            yield return new WaitForSeconds(1.1f);
             
             _inputService.EnablePlayerInputs();
 

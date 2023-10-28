@@ -8,6 +8,20 @@ namespace база.InventorySystem
     public sealed class Inventory : ITickable
     {
         private readonly Dictionary<Type, List<Item>> _items = new();
+        public const int InventorySize = 10;
+
+        public bool IsFull => ItemsCount() >= InventorySize;
+        public int ItemsCount()
+        {
+            int count = 0;
+
+            foreach (var itemContainer in _items)
+            {
+                count += itemContainer.Value.Count;
+            }
+
+            return count;
+        }
 
         public event Action<Item> OnAdded; 
         public event Action<Item> OnRemoved;
@@ -31,7 +45,7 @@ namespace база.InventorySystem
         
         public void Add(Item item)
         {
-            if (item == null)
+            if (item == null || ItemsCount() >= InventorySize)
                 return;
             
             if (!_items.ContainsKey(item.GetItemType()))

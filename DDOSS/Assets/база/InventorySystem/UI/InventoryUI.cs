@@ -6,12 +6,13 @@ namespace база.InventorySystem.UI
 {
     public sealed class InventoryUI : MonoBehaviour
     {
+        [SerializeField] private GameObject inventoryFullLabel;
         private List<InventorySlot> _slots = new();
 
-        private InventorySystem.Inventory _inventory;
+        private Inventory _inventory;
 
         [Inject]
-        private void Construct(InventorySystem.Inventory inventory)
+        private void Construct(Inventory inventory)
         {
             _inventory = inventory;
         }
@@ -30,11 +31,14 @@ namespace база.InventorySystem.UI
         private void OnAdded(Item item)
         {
             FindNull().SetItem(item);
+
+            CheckIsFull();
         }
 
         private void OnRemoved(Item item)
         {
             Find(item.ItemID).SetItem(null);
+            CheckIsFull();
         }
 
         private InventorySlot Find(string itemID)
@@ -57,6 +61,12 @@ namespace база.InventorySystem.UI
             }
 
             return null;
+        }
+
+        private void CheckIsFull()
+        {
+            if (_inventory.IsFull) inventoryFullLabel.SetActive(true);
+            else inventoryFullLabel.SetActive(false);
         }
     }
 }
