@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
+using база.WorldBase;
 
 namespace база.InventorySystem.UI
 {
@@ -12,8 +13,9 @@ namespace база.InventorySystem.UI
         private Inventory _inventory;
 
         [Inject]
-        private void Construct(Inventory inventory)
+        private void Construct(Inventory inventory, IObjectResolver resolver)
         {
+            Injector.SetResolver(resolver);
             _inventory = inventory;
         }
     

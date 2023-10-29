@@ -2,18 +2,15 @@ using UnityEngine;
 using VContainer;
 using база.Economy;
 using база.InventorySystem;
-using база.PlayerSystem;
 
 namespace база.Machines
 {
     [RequireComponent(typeof(Animator))]
-    public sealed class ExamineToSale : MonoBehaviour, IExaminable
+    public sealed class ExamineToSale : Machine<ISellable>
     {
         public AudioSource saleSource;
-
-        private Inventory _inventory;
+        
         private Wallet _wallet;
-
         private Animator _animator;
 
         private void Start()
@@ -24,30 +21,20 @@ namespace база.Machines
         [Inject]
         private void Construct(Inventory inventory, Wallet wallet)
         {
-            _inventory = inventory;
+            SetInventory(inventory);
             _wallet = wallet;
         }
 
-        public void Examine()
+        protected override void OnProcessTypedItem(Item item, ISellable typedItem)
         {
-            var allItems = _inventory.GetAll();
+            _wallet.AddMoney(typedItem.Price);
+            Inventory.Remove(item);
+            saleSource.Play();
+        }
 
-            bool solded = false;
-            
-            foreach(var item in allItems)
-            {
-                if(item is ISellable sellableItem)
-                {
-                    _wallet.AddMoney(sellableItem.Price);
-                    _inventory.Remove(item);
-                    saleSource.Play();
-
-                    solded = true;
-                }
-            }
-            
-            if(solded)
-                _animator.Play("SoldingWormOnSold");
+        protected override void OnCompletedWithItems()
+        {
+            _animator.Play("SoldingWormOnSold");
         }
     }
 }

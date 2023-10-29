@@ -15,3 +15,4 @@ MonoBehaviour:
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 23bcd5f89b8b8d20f823863d23745885, type: 3}
   <ItemWorldImage>k__BackingField: {fileID: 21300000, guid: 78ad50119761b0902bfb7c9090f7dcc7, type: 3}
   <ItemID>k__BackingField: zinc
+  Ruby: {fileID: 11400000, guid: a0c2e26a1d41cf6418699f57db776641, type: 2}

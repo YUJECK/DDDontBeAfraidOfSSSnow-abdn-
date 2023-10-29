@@ -7,6 +7,7 @@ using база.InventorySystem.UI;
 using база.MOBS.TargetSystem;
 using база.PlayerSystem.PlayerECS;
 using база.Tests;
+using база.WorldBase;
 
 namespace база.InputServices
 {
@@ -18,6 +19,8 @@ namespace база.InputServices
         
         protected override void Configure(IContainerBuilder builder)
         {
+            Injector.SetResolver(Container);
+            
             builder
                 .Register<InputService>(Lifetime.Singleton)
                 .As<IInputService>()
